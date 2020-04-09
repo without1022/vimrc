@@ -54,6 +54,12 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'frazrepo/vim-rainbow'
 Plugin 'preservim/nerdcommenter'
 
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+Plugin 'kannokanno/previm'
+Plugin 'tyru/open-browser.vim'
+
  
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
