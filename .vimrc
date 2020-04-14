@@ -3,22 +3,25 @@ set mouse=a "开启鼠标点击"
 syntax on        "语法高亮
 set tabstop=4    "tab长度
 set shiftwidth=4 "缩进长度"
+set cuc
+set cul
 
 
 
 "code format"
-"map <F4> :call FormatCode()<CR><CR>
-"func FormatCode()
-"    exec "w"
-"    if &filetype == 'c' || &filetype == 'h'
-"        exec "!astyle --style=allman -k3 -W3 -z2 -c -t -s -w -xG -S -p -U -y -j -xC90 -xL --suffix=none %"
-"   elseif &filetype == 'cpp' || &filetype == 'cc'
-"       exec "!astyle --style=google -k3 -W3 -z2 -c -t -s -w -xG -S -p -U -y -j --suffix=none % > /dev/null 2>&1"
-"   else
-"       exec "normal gg=G"
-"        return
-"    endif
-"endfunc
+"sudo apt-get install astyle
+map <F4> :call FormatCode()<CR><CR>
+func FormatCode()
+	exec "w"
+	if &filetype == 'c' || &filetype == 'h'
+		exec "!astyle --style=allman -b -k3 -W3 -z2 -c -t -s -w -xG -S -p -U -y -j -xC90 -xL --suffix=none %"
+	elseif &filetype == 'cpp' || &filetype == 'cc'
+		exec "!astyle --style=google -k3 -W3 -z2 -c -t -s -w -xG -S -p -U -y -j --suffix=none % > /dev/null 2>&1"
+	else
+		exec "normal gg=G"
+		return
+	endif
+endfunc
 
 "NERDTree
 map <F10> :NERDTreeToggle<CR>
@@ -32,6 +35,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 
 let mapleader = ","
 
@@ -59,7 +63,7 @@ Plugin 'plasticboy/vim-markdown'
 
 Plugin 'kannokanno/previm'
 Plugin 'tyru/open-browser.vim'
-
+Plugin 'ycm-core/YouCompleteMe'
  
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
