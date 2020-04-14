@@ -23,8 +23,22 @@ func FormatCode()
 	endif
 endfunc
 
+
+"plugin config start
+
 "NERDTree
 map <F10> :NERDTreeToggle<CR>
+
+"tarbar
+nmap <F8> :TagbarToggle<CR>
+
+"youcompleteMe
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+let g:ycm_key_invoke_completion = '<c-z>'
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt = 0
+
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 
@@ -35,7 +49,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 
 let mapleader = ","
 
@@ -44,6 +57,10 @@ let NERDSpaceDelims=1           " 让注释符与语句之间留一个空格
 let NERDCompactSexyComs=1       " 多行注释时样子更好看
 
 let g:NERDDefaultAlign = 'left'  "将行注释符左对齐 
+"plugin config end
+
+
+
 
 "mkdir -p ~/.vim/bundle
 "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -64,6 +81,8 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'kannokanno/previm'
 Plugin 'tyru/open-browser.vim'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'majutsushi/tagbar'
+
  
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
