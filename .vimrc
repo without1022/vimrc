@@ -73,6 +73,9 @@ let NERDCompactSexyComs=1       " 多行注释时样子更好看
 let g:NERDDefaultAlign = 'left'  "将行注释符左对齐 
 "plugin config end
 
+"ctrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 
 
@@ -97,6 +100,7 @@ Plugin 'tyru/open-browser.vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'kien/ctrlp.vim'
 " Plugin 'Xuyuanp/nerdtree-git-plugin'
 
  
