@@ -1,10 +1,14 @@
 set nu
-set mouse=a "开启鼠标点击"
+set mouse=n "开启鼠标点击"
 syntax on        "语法高亮
 set tabstop=4    "tab长度
 set shiftwidth=4 "缩进长度"
 set cuc
 set cul
+set foldmethod=indent
+au BufWinLeave * silent mkview  " 保存文件的折叠状态
+au BufRead * silent loadview    " 恢复文件的折叠状态
+nnoremap <space> za             " 用空格来切换折叠状态"
 
 
 
@@ -29,7 +33,17 @@ endfunc
 "NERDTree
 map <F10> :NERDTreeToggle<CR>
 
-"tarbar need install  universal-ctags
+" 当不带参数打开Vim时自动加载项目树
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" " 当所有文件关闭时关闭项目树窗格
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" " 不显示这些文件
+let NERDTreeIgnore=['\.pyc$', '\~$', 'node_modules'] "ignore files in NERDTree
+" " 不显示项目树上额外的信息，例如帮助、提示什么的
+let NERDTreeMinimalUI=1
+
+"tarbar
 nmap <F8> :TagbarToggle<CR>
 
 "youcompleteMe
@@ -82,6 +96,8 @@ Plugin 'kannokanno/previm'
 Plugin 'tyru/open-browser.vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
+Plugin 'tmhedberg/SimpylFold'
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
 
  
 " All of your Plugins must be added before the following line
